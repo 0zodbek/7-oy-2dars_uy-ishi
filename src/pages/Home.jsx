@@ -17,6 +17,7 @@ function Home() {
     fetch(`http://localhost:3000/machines?page=${page}&limit=${limit}`)
       .then(resp => resp.json())
       .then(data => {
+        console.log(data);
         setCars(data.results);
         setPageCount(Math.ceil(data.total / limit));
       })
@@ -42,7 +43,7 @@ function Home() {
 
   return (
     <div className='main justify-center'>
-      <div className='container max-w-[1200px] flex gap-4 flex-wrap mt-5 justify-center'>
+      <div className='container mx-auto max-w-[1200px] flex gap-4 flex-wrap mt-5 justify-center'>
         {cars.map((car, index) => (
           <div key={index} className='card w-[341px] p-5 border shadow-lg mb-1 bg-slate-100'>
             <img src={car.image} alt={car.title} className='w-full h-auto' />
